@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 300px;
+        }
+        
+        th,
+        td {
+            border: 0px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        input[type="number"] {
+            width: 60px;
+        }
+        
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+            </tr>
+            <tr>
+                <td><label for="tires">Tires</label></td>
+                <td><input type="number" id="tires" name="tires" min="0"></td>
+            </tr>
+            <tr>
+                <td><label for="oil">Oil</label></td>
+                <td><input type="number" id="oil" name="oil" min="0"></td>
+            </tr>
+            <tr>
+                <td><label for="sparkPlugs">Spark Plugs</label></td>
+                <td><input type="number" id="sparkPlugs" name="sparkPlugs" min="0"></td>
+            </tr>
+        </table>
+        <button type="submit">Submit Order</button>
+    </form>
+</body>
+
+</html>
