@@ -7,9 +7,10 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="icon" href="assets/images/favicons/favicon-32x32.png" type="image/x-icon">
+    <style src="assets/css/style.css"></style>
 </head>
-<body class="bg-gradient-to-r from-blue-400 to-purple-500 min-h-screen flex flex-col">
-    <header class="bg-gray-400 backdrop-blur-sm shadow-lg">
+<body id='body' class="bg-gradient-to-r from-blue-300 to-purple-400 min-h-screen flex flex-col">
+    <header class="bg-gray-800 backdrop-blur-sm shadow-lg">
         <nav class="w-full bg-white/90 backdrop-blur-sm shadow-lg">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -18,9 +19,9 @@
                         <image src="assets/images/logos/logo.png" alt="logo" class="w-14 h-14 rounded-md" >
                     </div>
                     <div class="hidden md:flex space-x-4">
-                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">Home</a>
-                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">About</a>
-                        <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">Features</a>
+                        <a href="#" class="text-white hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">Home</a>
+                        <a href="#about" class="text-white hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">About</a>
+                        <a href="#features" class="text-white hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">Features</a>
                     </div>
                     <div class="md:hidden">
                         <button id="menuToggle" class="text-gray-700 hover:text-blue-600 focus:outline-none">
@@ -39,68 +40,109 @@
         </nav>
     </header>
 
-    <main class="flex-grow flex flex-col items-center justify-center p-4">
-        <h1 class="text-4xl font-bold text-white mb-6 text-center">Weather Forecast</h1>
-        
-        <form id="weatherForm" class="mb-6 w-full max-w-md">
-            <div class="flex gap-2">
-                <input type="text" name="city" placeholder="Enter city name" 
-                    class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg"
-                    required>
-                <button type="submit" 
-                    class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg transition-colors">
-                    <i class="fas fa-search mr-2"></i>Search
-                </button>
+
+
+    <main class="flex-grow flex flex-col lg:flex-row items-start justify-center p-4 gap-8">
+       
+        <!-- Main Weather Content -->
+        <div class="flex flex-col items-center w-full lg:w-auto">
+            <div class="bg-gradient-to-tr from-indigo-600 via-purple-500 to-pink-600 shadow-md rounded-md p-2 w-full lg:w-auto">
+                <p id="'cityName'" > </p>
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-4 border-b border-white/20 pb-1 sm:pb-2 text-center backdrop-blur-sm shadow-lg flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+                    Weather Forecast 
+                    <span class="hidden" id="forId">
+                        for <span id="cityTitle"></span>
+                    </span>
+                </h1>
             </div>
-        </form>
-
-        <div class="max-w-md w-full bg-teal/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden">
-            <div class="p-8">
-                <!-- Weather Results -->
-                <div id="weatherResult" class="space-y-6 hidden">
-                    <div class="text-center">
-                        <h2 class="text-3xl font-semibold text-gray-800 mb-2" id="cityName"></h2>
-                       <span> Longtitude <i class="text-gray-800 text-center" id="longtitude"></i></span>
-                       <span> latitude <i class="text-gray-800 text-center" id="latitude"></i> </span>
-                        <div class="flex items-center justify-center space-x-4">
-                            <img id="weatherIcon" src="" alt="Weather Icon" class="w-20 h-20">
-                            <p class="text-6xl font-bold text-gray-900" id="temperature"></p>
-                        </div>
-                        <p class="text-xl text-gray-600 mt-2" id="description"></p>
-                        <p class="text-md text-gray-500 mt-1" id="feelsLike"></p>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="text-center p-4 bg-blue-50 rounded-lg">
-                            <i class="fas fa-tint text-blue-500 mb-2"></i>
-                            <p class="text-gray-600">Humidity</p>
-                            <p class="text-xl font-semibold" id="humidity"></p>
-                        </div>
-                        <div class="text-center p-4 bg-blue-50 rounded-lg">
-                            <i class="fas fa-wind text-blue-500 mb-2"></i>
-                            <p class="text-gray-600">Wind Speed</p>
-                            <p class="text-xl font-semibold" id="windSpeed"></p>
-                        </div>
-                    </div>
+            <form id="weatherForm" class="mb-6 w-full max-w-md mt-10">
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" name="city" placeholder="Enter city name" 
+                        class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg bg-white/30 backdrop-blur-md"
+                        required>
+                    <button type="submit" 
+                        class="px-6 py-3 bg-blue-600 backdrop-blur-sm text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg transition-colors">
+                        <i class="fas fa-search mr-2"></i>Search
+                    </button>
                 </div>
-
-                <!-- Loading Indicator -->
-                <div id="loadingIndicator" class="hidden text-center py-8">
-                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                    <p class="text-gray-600 mt-4">Fetching weather data...</p>
-                </div>
-
-                <!-- Error Message -->
-                <div id="errorMessage" class="hidden">
-                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded">
-                        <p class="font-medium"></p>
+            </form>
+    
+            <div id="weatherResult" class="max-w-md w-full bg-gray-600 backdrop-blur-lg rounded-lg shadow-2xl overflow-hidden border border-white/30 hidden">
+                <div class="p-8 space-y-6"> 
+                    <!-- Weather Results -->
+                    <div class="space-y-6">
+                        <div class="text-center">
+                            <h2 class="text-3xl font-semibold text-white mb-2" id="cityName"></h2>
+                            <div class="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4">
+                                <span class="text-white"> <b>Longtitude: </b><i class="text-white text-center" id="longtitude"></i></span>
+                                <span class="text-white"> <b>Latitude: </b><i class="text-white text-center" id="latitude"></i> </span>
+                            </div>
+                            <div class="flex items-center justify-center space-x-4 mt-4">
+                                <img id="weatherIcon" src="" alt="Weather Icon" class="w-16 sm:w-20 h-16 sm:h-20">
+                                <p class="text-5xl sm:text-6xl font-bold text-white" id="temperature"></p>
+                            </div>
+                            <p class="text-lg sm:text-xl text-white" id="weatherStatus"></p>
+                            <p class="text-lg sm:text-xl text-white mt-2" id="description"></p>
+                            <p class="text-sm sm:text-md text-white mt-1" id="feelsLike"></p>
+                        </div>
+    
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/30">
+                                <i class="fas fa-tint text-white mb-2"></i>
+                                <p class="text-white">Humidity</p>
+                                <p class="text-xl font-semibold text-white" id="humidity"></p>
+                            </div>
+                            <div class="text-center p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/30">
+                                <i class="fas fa-wind text-white mb-2"></i>
+                                <p class="text-white">Wind Speed</p>
+                                <p class="text-xl font-semibold text-white" id="windSpeed"></p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Loading Indicator -->
+                    <div id="loadingIndicator" class="hidden text-center py-8">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto"></div>
+                        <p class="text-white mt-4">Fetching weather data...</p>
+                    </div>
+    
+                    <!-- Error Message -->
+                    <div id="errorMessage" class="hidden">
+                        <div class="bg-red-100/80 backdrop-blur-sm border-l-4 border-red-500 text-red-700 p-4 rounded">
+                            <p class="font-medium"></p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+         <!-- Aside Section -->
+         <aside class="w-full lg:max-w-md lg:sticky lg:top-12 hidden" id="cityFacts">
+            <div id="cityFacts" class="p-6 bg-gradient-to-b from-green-700 to-blue-600 backdrop-blur-xl rounded-lg shadow-xl border border-white/40">
+                <div class="space-y-3 mt-240">
+                    <h1 class="text-center text-2xl text-white font-bold backdrop-blur-sm p-2">Did You Know</h1>
+                    <p class="text-white leading-relaxed text-sm backdrop-blur-sm p-3 rounded-lg bg-white/10" id="cityDescription"></p>
+                    <!-- Loading State -->
+                    <div id="cityFactsLoading" class="hidden">
+                        <div class="animate-pulse space-y-3">
+                            <div class="h-4 bg-white/30 backdrop-blur-md rounded w-3/4"></div>
+                            <div class="h-4 bg-white/30 backdrop-blur-md rounded w-full"></div>
+                            <div class="h-4 bg-white/30 backdrop-blur-md rounded w-5/6"></div>
+                        </div>
+                    </div>
+                    <!-- Error State -->
+                    <div id="cityFactsError" class="hidden text-red-300 text-sm bg-black/20 backdrop-blur-md p-2 rounded">
+                        Could not load city information
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+
     </main>
 
-    <footer class="bg-gray-300 backdrop-blur-sm py-4 text-center text-gray-600 text-sm mt-8">
+    <footer class="bg-gray-800 backdrop-blur-sm py-4 text-center text-gray-300 text-sm mt-8">
         &copy; 2025 McMnyages Weather App. All rights reserved.
     </footer>
 

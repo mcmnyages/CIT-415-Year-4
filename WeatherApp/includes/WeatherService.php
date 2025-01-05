@@ -45,7 +45,7 @@ class WeatherService {
             'humidity' => $data['main']['humidity'],
             'windSpeed' => $data['wind']['speed'],
             'cityName' => $data['name'],
-            'timeZone'=>$data['timezone'],
+            // 'timeZone'=>$data['timezone'],
             'country' => $data['sys']['country'],
             'weatherStatus'=> $data['weather'][0]['main'],
             'timeZone'=> $data['timezone'],
