@@ -1,6 +1,71 @@
-This is project was focused in searching weather for particular cities around the wordl.
-Build by php for the backend and html, css and js for the frontend I focused more in tailwind css though
-I got the API key from https://openweathermap.org/api and also for dynamic image generation for cities I
-used https://en.wikipedia.org/api/rest_v1/ 
+Weather App 🌦️
+Overview
+This project is a dynamic Weather App that allows users to search for weather conditions in cities around the world. The app is designed with a clean and responsive UI, built using HTML, CSS, and JavaScript, with styling powered by Tailwind CSS. The backend is implemented using PHP, ensuring robust and seamless API integration.
 
-ScreenShots
+Features
+🌍 Search Weather by City: Enter any city's name to get up-to-date weather information.
+🌤️ Dynamic City Images: Displays images relevant to the searched city.
+📈 Weather Details: Includes temperature, humidity, wind speed, and weather description.
+📱 Responsive Design: Optimized for desktop and mobile devices.
+APIs Used
+OpenWeatherMap API
+Provides current weather details like temperature, humidity, and wind speed.
+Get your API key here: https://openweathermap.org/api
+
+WikiMedia API
+Fetches city-specific images and key facts dynamically.
+Documentation: https://en.wikipedia.org/api/rest_v1/
+
+Tech Stack
+Frontend: HTML, CSS, JavaScript
+Styling: Tailwind CSS
+Backend: PHP
+APIs: OpenWeatherMap and WikiMedia
+How to Run
+Clone the repository:
+bash
+Copy code
+git clone <repository-url>
+cd <project-folder>
+Set up a local server (e.g., using WAMP, XAMPP, or similar tools).
+Configure the API keys:
+Add your OpenWeatherMap API key to the PHP backend.
+No API key is needed for WikiMedia API.
+Access the project via the local server (e.g., http://localhost/weather-app).
+Screenshots
+1. Home Page
+A simple, user-friendly interface for entering a city name.
+![alt text](image.png)
+2. Weather Results
+Displays weather details and a dynamic image of the city.
+![alt text](photo_2025-01-05_22-54-18.jpg)
+ ![alt text](photo_2025-01-05_22-54-25.jpg) 
+ ![alt text](photo_2025-01-05_22-54-31.jpg)
+Future Improvements
+🌎 Add multilingual support for global users.
+📊 Include hourly and weekly weather forecasts.
+📷 Enhance image quality with alternative APIs like Unsplash.
+🗺️ Add an interactive map to show the city location.
+Contributing
+Contributions are welcome!
+
+Fork this repository.
+Create a new branch:
+bash
+Copy code
+git checkout -b feature-name
+Commit your changes:
+bash
+Copy code
+git commit -m "Add your message here"
+Push to the branch:
+bash
+Copy code
+git push origin feature-name
+Submit a pull request.
+License
+This project is open-source and available under the MIT License.
+
+Acknowledgments
+OpenWeatherMap
+WikiMedia
