@@ -1,0 +1,6 @@
+This is project was focused in searching weather for particular cities around the wordl.
+Build by php for the backend and html, css and js for the frontend I focused more in tailwind css though
+I got the API key from https://openweathermap.org/api and also for dynamic image generation for cities I
+used https://en.wikipedia.org/api/rest_v1/ 
+
+ScreenShots
