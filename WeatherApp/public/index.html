@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McMnyages Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="icon" href="assets/images/favicons/favicon-32x32.png" type="image/x-icon">
+</head>
+<body class="bg-gradient-to-r from-blue-400 to-purple-500 min-h-screen flex flex-col">
+    <header class="bg-gray-400 backdrop-blur-sm shadow-lg">
+        <nav class="w-full bg-white/90 backdrop-blur-sm shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="flex items-center justify-between h-16">
+                    <div class="flex-shrink-0">
+                        <image src="assets/images/logos/logo.png" alt="logo" class="w-14 h-14 rounded-md" >
+                    </div>
+                    <div class="hidden md:flex space-x-4">
+                        <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">Home</a>
+                        <a href="#about" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">About</a>
+                        <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-xl font-medium">Features</a>
+                    </div>
+                    <div class="md:hidden">
+                        <button id="menuToggle" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden">
+                <div class="px-4 pt-4 pb-2 space-y-2">
+                    <a href="#" class="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="#about" class="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">About</a>
+                    <a href="#features" class="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium">Features</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center p-4">
+        <h1 class="text-4xl font-bold text-white mb-6 text-center">Weather Forecast</h1>
+        
+        <form id="weatherForm" class="mb-6 w-full max-w-md">
+            <div class="flex gap-2">
+                <input type="text" name="city" placeholder="Enter city name" 
+                    class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg"
+                    required>
+                <button type="submit" 
+                    class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-lg transition-colors">
+                    <i class="fas fa-search mr-2"></i>Search
+                </button>
+            </div>
+        </form>
+
+        <div class="max-w-md w-full bg-teal/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden">
+            <div class="p-8">
+                <!-- Weather Results -->
+                <div id="weatherResult" class="space-y-6 hidden">
+                    <div class="text-center">
+                        <h2 class="text-3xl font-semibold text-gray-800 mb-2" id="cityName"></h2>
+                       <span> Longtitude <i class="text-gray-800 text-center" id="longtitude"></i></span>
+                       <span> latitude <i class="text-gray-800 text-center" id="latitude"></i> </span>
+                        <div class="flex items-center justify-center space-x-4">
+                            <img id="weatherIcon" src="" alt="Weather Icon" class="w-20 h-20">
+                            <p class="text-6xl font-bold text-gray-900" id="temperature"></p>
+                        </div>
+                        <p class="text-xl text-gray-600 mt-2" id="description"></p>
+                        <p class="text-md text-gray-500 mt-1" id="feelsLike"></p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <i class="fas fa-tint text-blue-500 mb-2"></i>
+                            <p class="text-gray-600">Humidity</p>
+                            <p class="text-xl font-semibold" id="humidity"></p>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <i class="fas fa-wind text-blue-500 mb-2"></i>
+                            <p class="text-gray-600">Wind Speed</p>
+                            <p class="text-xl font-semibold" id="windSpeed"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="loadingIndicator" class="hidden text-center py-8">
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                    <p class="text-gray-600 mt-4">Fetching weather data...</p>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="hidden">
+                    <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded">
+                        <p class="font-medium"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-300 backdrop-blur-sm py-4 text-center text-gray-600 text-sm mt-8">
+        &copy; 2025 McMnyages Weather App. All rights reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
