@@ -1,44 +1,52 @@
 <html>
-<head><title><?php echo $page['title'] ?></title></head>
-<body>
-<div style='margin-left: .1in; margin-right: .1in'>
-    <h1 align='center'><?php echo $page['top'] ?></h1>
-    <p><font size='+2'><b><?php echo $_POST['interest'] ?></b></font>
-    <p align='right'>(<?php echo $n_products ?> products found)</p>
+<head>
+    <title><?php echo $page['title'] ?></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold text-center mb-6"><?php echo $page['top'] ?></h1>
+    <p class="text-2xl font-bold mb-4"><?php echo $_POST['interest'] ?></p>
+    <p class="text-right text-gray-600 mb-4">(<?php echo $n_products ?> products found)</p>
     
-    <table border='0' cellpadding='3' width='100%'>
-        <tr>
-        <?php foreach($table_heads as $heading): ?>
-            <th><?php echo $heading ?></th>
-        <?php endforeach; ?>
-        </tr>
-        
-        <?php for($i = $n_start; $i <= $n_end; $i++): ?>
-        <tr>
-            <td align='right'><?php echo $all[$i]->catalog_number ?></td>
-            <td><?php echo $all[$i]->name ?></td>
-            <td><?php echo $all[$i]->description ?></td>
-            <td style='text-align: center'>$<?php echo $all[$i]->price ?>/lb</td>
-            <td style='text-align: center'>
-                <img src='images/<?php echo $all[$i]->pix ?>' width='55' height='60'>
-            </td>
-        </tr>
-        <?php endfor; ?>
-    </table>
+    <div class="overflow-x-auto shadow-lg rounded-lg">
+        <table class="min-w-full bg-white">
+            <thead class="bg-gray-100">
+                <tr>
+                <?php foreach($table_heads as $heading): ?>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"><?php echo $heading ?></th>
+                <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+                <?php for($i = $n_start; $i <= $n_end; $i++): ?>
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 text-right whitespace-nowrap"><?php echo $all[$i]->catalog_number ?></td>
+                    <td class="px-6 py-4 whitespace-nowrap"><?php echo $all[$i]->name ?></td>
+                    <td class="px-6 py-4"><?php echo $all[$i]->description ?></td>
+                    <td class="px-6 py-4 text-center whitespace-nowrap">$<?php echo $all[$i]->price ?>/lb</td>
+                    <td class="px-6 py-4 text-center">
+                        <img src='images/<?php echo $all[$i]->pix ?>' class="w-[55px] h-[60px] inline-block">
+                    </td>
+                </tr>
+                <?php endfor; ?>
+            </tbody>
+        </table>
+    </div>
 
-    <form action='<?php echo $_SERVER['PHP_SELF'] ?>' method='POST'>
+    <form action='<?php echo $_SERVER['PHP_SELF'] ?>' method='POST' class="mt-6 space-x-4">
         <input type='hidden' name='n_end' value='<?php echo $n_end ?>'>
         <input type='hidden' name='interest' value='<?php echo $_POST['interest'] ?>'>
-        <input type='submit' value='Select another category'>
+        <input type='submit' value='Select another category' class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         <?php if($n_end > $n_per_page): ?>
-            <input type='submit' name='Products' value='Previous'>
+            <input type='submit' name='Products' value='Previous' class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
         <?php endif; ?>
         <?php if($n_end < $n_products): ?>
-            <input type='submit' name='Products' value='Next <?php echo $n_per_page ?>'>
+            <input type='submit' name='Products' value='Next <?php echo $n_per_page ?>' class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
         <?php endif; ?>
     </form>
 </div>
-<hr>
-<p style='text-align: center; font-size: 75%'><?php echo $page['bottom'] ?></p>
+<hr class="my-8">
+<p class="text-center text-sm text-gray-500"><?php echo $page['bottom'] ?></p>
 </body>
 </html>
