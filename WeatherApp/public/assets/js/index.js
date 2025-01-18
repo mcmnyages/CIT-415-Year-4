@@ -114,3 +114,9 @@ async function displayCityData(cityName) {
 
 
 
+function getCurrentYear() {
+    const currentDate = new Date();
+    return currentDate.getFullYear();
+}
+document.getElementById('current-year').textContent = getCurrentYear();
+    
